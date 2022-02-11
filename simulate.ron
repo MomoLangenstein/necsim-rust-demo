@@ -1,0 +1,26 @@
+(
+    speciation: 0.75,
+    sample: Sample(percentage: 1.0),
+    rng: Seed(7206077791098137251),
+
+    scenario: SpatiallyExplicitUniformTurnover(
+        habitat: "maps/demo/habitat.tif",
+        dispersal: "maps/demo/dispersal.tif",
+    ),
+    
+    algorithm: Independent(
+        delta_t: 1.0,
+        dedup_cache: None,
+    ),
+    
+    reporters: [ Plugin(
+        library: "plugins/demo.so",
+        reporters: [ Demo(
+            ignore: [
+                Location(x: 0, y: 0),
+                Location(x: 1, y: 0),
+                Location(x: 5, y: 0),
+            ],
+        ) ],
+    ) ],
+)

@@ -1,0 +1,35 @@
+#!/bin/bash
+set -e
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
+    sh -s -- --default-toolchain none --profile minimal --no-modify-path -y
+
+source $HOME/.cargo/env
+
+git submodule init
+git submodule update
+
+cargo build --release --manifest-path necsim-rust/Cargo.toml \
+                      --features rustcoalescence-algorithms-gillespie \
+                      --features rustcoalescence-algorithms-independent
+
+cargo build --release
+
+mkdir plugins
+
+for f in target/release/deps/libnecsim_plugins_*.so necsim-rust/target/release/deps/libnecsim_plugins_*.so
+do
+    cp "$f" "plugins/$(echo "$f" | sed s:.*target/release/deps/libnecsim_plugins_::)"
+done
+
+mkdir bin
+cp necsim-rust/target/release/rustcoalescence ./bin
+
+cp -r necsim-rust/docs .
+cp -r necsim-rust/maps .
+
+rm -rf .cargo .github .rustup .vscode analysis binder necsim-rust src \
+       target .fossa.yml .gitignore .gitmodules .gitpod.Dockerfile \
+       .gitpod.yml Cargo.lock Cargo.toml rust-toolchain rustfmt.toml
+
+echo 'export PATH="$HOME/bin:$PATH"' >> $HOME/.bashrc

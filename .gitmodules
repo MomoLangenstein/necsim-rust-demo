@@ -1,0 +1,4 @@
+[submodule "necsim-rust"]
+	path = necsim-rust
+	url = https://github.com/MomoLangenstein/necsim-rust.git
+	shallow = true
