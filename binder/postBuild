@@ -10,7 +10,6 @@ git submodule init
 git submodule update
 
 cargo build --release --manifest-path necsim-rust/Cargo.toml \
-                      --features rustcoalescence-algorithms-gillespie \
                       --features rustcoalescence-algorithms-independent
 
 cargo build --release
@@ -31,5 +30,7 @@ cp -r necsim-rust/maps .
 rm -rf .cargo .github .rustup .vscode analysis binder necsim-rust src \
        target .fossa.yml .gitignore .gitmodules .gitpod.Dockerfile \
        .gitpod.yml Cargo.lock Cargo.toml rust-toolchain rustfmt.toml
+
+rm -rf $HOME/.cargo $HOME/.rustup
 
 echo 'export PATH="$HOME/bin:$PATH"' >> $HOME/.bashrc
