@@ -21,6 +21,8 @@ do
     cp "$f" "plugins/$(echo "$f" | sed s:.*target/release/deps/libnecsim_plugins_::)"
 done
 
+pip install matplotlib numpy pandas pyarrow
+
 mkdir bin
 cp necsim-rust/target/release/rustcoalescence ./bin
 
