@@ -1,6 +1,6 @@
 # necsim-rust-demo &emsp; [![CI Status]][workflow] [![License Status]][fossa] [![Code Coverage]][codecov] [![Binder Demo]][binder] [![Gitpod Ready-to-Code]][gitpod]
 
-[CI Status]: https://img.shields.io/github/workflow/status/MomoLangenstein/necsim-rust-demo/CI/main?label=CI
+[CI Status]: https://img.shields.io/github/actions/workflow/status/MomoLangenstein/necsim-rust-demo/ci.yml?branch=main
 [workflow]: https://github.com/MomoLangenstein/necsim-rust-demo/actions/workflows/ci.yml?query=branch%3Amain
 
 [License Status]: https://app.fossa.com/api/projects/custom%2B26490%2Fgithub.com%2FMomoLangenstein%2Fnecsim-rust-demo.svg?type=shield
